@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOS Content Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -1;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+
+        .card:nth-child(1) {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            border-left: 5px solid #FF6B6B;
+        }
+
+        .card:nth-child(2) {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            border-left: 5px solid #4ECDC4;
+        }
+
+        .card:nth-child(3) {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            border-left: 5px solid #45B7D1;
+        }
+
+        .card:nth-child(4) {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            border-left: 5px solid #96CEB4;
+        }
+
+        .card:nth-child(5) {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+            border-left: 5px solid #9B59B6;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            padding: 25px;
+        }
+
+        .card-title {
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 20px;
+            font-size: 1.25rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(44, 62, 80, 0.1);
+            position: relative;
+        }
+
+        .card-title:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+        }
+
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid rgba(44, 62, 80, 0.1);
+            padding: 12px;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-control:focus {
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            border-color: #3498db;
+            background: rgba(255, 255, 255, 1);
+        }
+
+        .form-select {
+            border-radius: 10px;
+            padding: 12px;
+            border: 2px solid rgba(44, 62, 80, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+            cursor: pointer;
+        }
+
+        .form-select:hover {
+            border-color: #3498db;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, #3498db, #2ecc71);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(52, 152, 219, 0.3);
+            background: linear-gradient(45deg, #2ecc71, #3498db);
+        }
+
+        input[type="file"] {
+            position: relative;
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
+            border: 2px dashed rgba(52, 152, 219, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        input[type="file"]:hover {
+            background: linear-gradient(45deg, rgba(52, 152, 219, 0.2), rgba(46, 204, 113, 0.2));
+            border-color: #3498db;
+        }
+
+        #contentDisplay {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .flashcard-front {
+            background: linear-gradient(135deg, #f6f9fc, #f1f5f8);
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #f1f5f8, #e5e9ec);
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            animation: cardAppear 0.5s ease forwards;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+
+        /* Flashcard styles */
+        .flashcard {
+            perspective: 1000px;
+            margin-bottom: 20px;
+        }
+
+        .flashcard-inner {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .flashcard:hover .flashcard-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flashcard-front, .flashcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Colorful flashcards - different color for each card */
+        .flashcard:nth-child(3n+1) .flashcard-front {
+            background: linear-gradient(135deg, #FF6B6B, #FFE66D);
+        }
+
+        .flashcard:nth-child(3n+2) .flashcard-front {
+            background: linear-gradient(135deg, #4ECDC4, #A1F4C9);
+        }
+
+        .flashcard:nth-child(3n+3) .flashcard-front {
+            background: linear-gradient(135deg, #45B7D1, #D4F2FF);
+        }
+
+        .flashcard-front {
+            color: #2c3e50;
+        }
+
+        .flashcard-back {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            transform: rotateY(180deg);
+            color: #2c3e50;
+        }
+
+        .flashcard-front h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .flashcard-front p {
+            font-size: 1.1rem;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        .flashcard-back p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* Content display styling */
+        #contentDisplay {
+            line-height: 1.6;
+            color: #2c3e50;
+        }
+
+        #contentDisplay h1, #contentDisplay h2, #contentDisplay h3 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+
+        #contentDisplay p {
+            margin-bottom: 1.2em;
+        }
+
+        /* Loading state */
+        .loading {
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(52, 152, 219, 0.5);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(52, 152, 219, 0.7);
+        }
+
+        /* Loader Styles */
+        .loader-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 5px solid #3498db;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+
+        .loader-text {
+            margin-top: 20px;
+            font-size: 1.2em;
+            font-weight: 500;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Download button style */
+        .btn-success {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            border: none;
+            border-radius: 10px;
+            padding: 12px 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+            background: linear-gradient(45deg, #20c997, #28a745);
+        }
+
+        /* Title Styles */
+        .main-title {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            position: relative;
+            animation: titleFloat 3s ease-in-out infinite;
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.8), rgba(46, 204, 113, 0.8));
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-title span {
+            background: linear-gradient(45deg, #fff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: none;
+        }
+
+        @keyframes titleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Add loader overlay -->
+    <div class="loader-overlay">
+        <div class="loader-content">
+            <div class="loader"></div>
+            <div class="loader-text">Processing...</div>
+        </div>
+    </div>
+
+    <video autoplay muted loop class="video-background">
+        <source src="{{ url_for('static', filename='background.jpeg') }}" type="jpeg">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="content-wrapper">
+        <div class="container mt-5">
+            <!-- Title -->
+            <div class="main-title">
+                <span>Content Generator Based On Curriculum</span>
+            </div>
+
+            <!-- Initial File Upload Section -->
+            <div class="card mb-4" id="uploadSection">
+                <div class="card-body">
+                    <h5 class="card-title">Upload BOS PDF</h5>
+                    <form id="uploadForm">
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="bosFile" accept=".pdf" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Upload and Process</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Subject Input Section (Initially Hidden) -->
+            <div class="card mb-4" id="subjectSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Enter Subject</h5>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="subjectInput" placeholder="Enter subject name">
+                        <button onclick="getUnits()" class="btn btn-primary mt-2">Get Units</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Units Selection -->
+            <div class="card mb-4" id="unitsSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Select Unit</h5>
+                    <select class="form-select" id="unitSelect" onchange="getTopics()">
+                        <option value="">Select a unit</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Topics Selection -->
+            <div class="card mb-4" id="topicsSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Select Topic</h5>
+                    <select class="form-select" id="topicSelect" onchange="showStudentLevel()">
+                        <option value="">Select a topic</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Student Level Selection -->
+            <div class="card mb-4" id="studentLevelSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Select Learning Level</h5>
+                    <select class="form-select mb-3" id="studentLevel">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate" selected>Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <button onclick="generateContent()" class="btn btn-primary">Generate Content</button>
+                </div>
+            </div>
+
+            <!-- Content Display -->
+            <div class="card mb-4" id="contentSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Generated Content</h5>
+                    <div id="contentDisplay" class="mt-3"></div>
+                    <!-- Add download button -->
+                    <button onclick="downloadContent()" class="btn btn-success mt-3">
+                        <i class="fas fa-download"></i> Download as PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- Revision Notes Section -->
+            <div class="card mb-4" id="revisionNotesSection" style="display: none;">
+                <div class="card-body">
+                    <h5 class="card-title">Quick Revision Notes</h5>
+                    <div id="flashcardsContainer" class="row g-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to show/hide loader
+        function toggleLoader(show, message = 'Processing...') {
+            const loader = document.querySelector('.loader-overlay');
+            const loaderText = document.querySelector('.loader-text');
+            loader.style.display = show ? 'flex' : 'none';
+            loaderText.textContent = message;
+        }
+
+        // Update the file upload handler
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData();
+            formData.append('file', document.getElementById('bosFile').files[0]);
+            
+            try {
+                toggleLoader(true, 'Uploading and processing file...');
+                const response = await fetch('/upload_bos', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    // Hide upload section and show subject section
+                    document.getElementById('uploadSection').style.display = 'none';
+                    document.getElementById('subjectSection').style.display = 'block';
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Error processing file');
+            } finally {
+                toggleLoader(false);
+            }
+        });
+
+        async function getUnits() {
+            const subject = document.getElementById('subjectInput').value;
+            if (!subject) {
+                alert('Please enter a subject');
+                return;
+            }
+
+            try {
+                toggleLoader(true, 'Fetching units...');
+                const response = await fetch('/get_units', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subject })
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const unitSelect = document.getElementById('unitSelect');
+                    unitSelect.innerHTML = '<option value="">Select a unit</option>';
+                    data.units.forEach(unit => {
+                        unitSelect.innerHTML += `<option value="${unit}">${unit}</option>`;
+                    });
+                    document.getElementById('unitsSection').style.display = 'block';
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Error fetching units');
+            } finally {
+                toggleLoader(false);
+            }
+        }
+
+        async function getTopics() {
+            const subject = document.getElementById('subjectInput').value;
+            const unit = document.getElementById('unitSelect').value;
+            
+            if (!unit) return;
+
+            try {
+                toggleLoader(true, 'Fetching topics...');
+                const response = await fetch('/get_topics', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ subject, unit })
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const topicSelect = document.getElementById('topicSelect');
+                    topicSelect.innerHTML = '<option value="">Select a topic</option>';
+                    data.topics.forEach(topic => {
+                        topicSelect.innerHTML += `<option value="${topic}">${topic}</option>`;
+                    });
+                    document.getElementById('topicsSection').style.display = 'block';
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Error fetching topics');
+            } finally {
+                toggleLoader(false);
+            }
+        }
+
+        function showStudentLevel() {
+            const topic = document.getElementById('topicSelect').value;
+            if (topic) {
+                document.getElementById('studentLevelSection').style.display = 'block';
+            }
+        }
+
+        async function generateContent() {
+            const subject = document.getElementById('subjectInput').value;
+            const topic = document.getElementById('topicSelect').value;
+            const studentLevel = document.getElementById('studentLevel').value;
+            
+            if (!topic) {
+                alert('Please select a topic');
+                return;
+            }
+
+            try {
+                toggleLoader(true, 'Generating content...');
+                const response = await fetch('/get_content', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ 
+                        subject,
+                        topic,
+                        student_level: studentLevel
+                    })
+                });
+                const data = await response.json();
+                
+                if (response.ok) {
+                    const contentDisplay = document.getElementById('contentDisplay');
+                    contentDisplay.innerHTML = marked.parse(data.content);
+                    document.getElementById('contentSection').style.display = 'block';
+                    
+                    if (data.revision_notes) {
+                        const flashcardsContainer = document.getElementById('flashcardsContainer');
+                        flashcardsContainer.innerHTML = '';
+                        
+                        data.revision_notes.forEach((note, index) => {
+                            const flashcard = document.createElement('div');
+                            flashcard.className = 'col-md-4 flashcard';
+                            flashcard.innerHTML = `
+                                <div class="flashcard-inner">
+                                    <div class="flashcard-front">
+                                        <h3>Point ${index + 1}</h3>
+                                        <p>Click to reveal</p>
+                                    </div>
+                                    <div class="flashcard-back">
+                                        <p>${note}</p>
+                                    </div>
+                                </div>
+                            `;
+                            flashcardsContainer.appendChild(flashcard);
+                        });
+                        document.getElementById('revisionNotesSection').style.display = 'block';
+                    }
+                } else {
+                    alert(data.error);
+                }
+            } catch (error) {
+                alert('Error generating content');
+            } finally {
+                toggleLoader(false);
+            }
+        }
+
+        // Add download function
+        async function downloadContent() {
+            const content = document.getElementById('contentDisplay').innerHTML;
+            
+            try {
+                toggleLoader(true, 'Generating PDF...');
+                const response = await fetch('/download_pdf', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ content })
+                });
+                
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'generated_content.pdf';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                } else {
+                    alert('Error generating PDF');
+                }
+            } catch (error) {
+                alert('Error downloading content');
+            } finally {
+                toggleLoader(false);
+            }
+        }
+    </script>
+</body>
+</html>

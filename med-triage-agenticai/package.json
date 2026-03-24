@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "assemblyai": "^4.8.0",
+    "sox.js": "^2.1.0"
+  }
+}

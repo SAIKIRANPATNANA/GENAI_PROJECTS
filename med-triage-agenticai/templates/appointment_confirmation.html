@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Confirmed | MediAssist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3367d6;
+            --secondary-color: #f8f9fa;
+            --accent-color: #34a853;
+            --text-color: #202124;
+            --light-text: #5f6368;
+            --border-radius: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .app-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 50px 15px;
+        }
+        
+        .app-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .app-logo i {
+            margin-right: 10px;
+            font-size: 32px;
+            color: var(--accent-color);
+        }
+        
+        .confirmation-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .success-icon {
+            font-size: 80px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .confirmation-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: var(--accent-color);
+        }
+        
+        .appointment-details {
+            background-color: var(--secondary-color);
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+        
+        .detail-row {
+            display: flex;
+            margin-bottom: 15px;
+            align-items: flex-start;
+        }
+        
+        .detail-label {
+            width: 120px;
+            font-weight: 600;
+            color: var(--light-text);
+        }
+        
+        .detail-value {
+            flex-grow: 1;
+        }
+        
+        .meet-link {
+            background-color: rgba(52, 168, 83, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border: 1px solid rgba(52, 168, 83, 0.2);
+        }
+        
+        .meet-link a {
+            color: var(--accent-color);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        .meet-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .actions {
+            margin-top: 30px;
+        }
+        
+        .btn-home {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-home:hover {
+            background-color: #2956b2;
+            transform: translateY(-2px);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-logo">
+            <i class="fas fa-heartbeat"></i>
+            <span>MediAssist</span>
+        </div>
+        
+        <div class="confirmation-card">
+            <i class="fas fa-check-circle success-icon"></i>
+            <h1 class="confirmation-title">Appointment Confirmed!</h1>
+            
+            <div class="appointment-details">
+                <div class="detail-row">
+                    <div class="detail-label">Doctor:</div>
+                    <div class="detail-value">{{ appointment.doctor_name }}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Specialization:</div>
+                    <div class="detail-value">{{ appointment.doctor_specialization }}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Date & Time:</div>
+                    <div class="detail-value">{{ appointment.appointment_time }}</div>
+                </div>
+                
+                <div class="detail-row">
+                    <div class="detail-label">Email:</div>
+                    <div class="detail-value">{{ appointment.patient_email }}</div>
+                </div>
+                
+                {% if appointment.meet_link %}
+                <div class="meet-link">
+                    <i class="fas fa-video"></i> 
+                    <a href="{{ appointment.meet_link }}" target="_blank">
+                        Join Google Meet at scheduled time
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+            
+            <p>A confirmation email has been sent to your email address with all the details and Google Meet link.</p>
+            
+            <div class="actions">
+                <a href="{{ url_for('home') }}" class="btn-home">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

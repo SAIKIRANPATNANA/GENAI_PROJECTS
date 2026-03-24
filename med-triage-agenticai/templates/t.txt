@@ -1,0 +1,39 @@
+front-upper_abdomen
+front-mid_abdomen
+front-lower_abdomen
+front-hand
+front-sexual_organs
+
+front-thigh
+front-knee
+front-lower_leg
+front-foot
+
+
+
+
+if we click on next not only array from selectedSymptoms but also selected_symptoms from model should also be send seperately
+
+
+
+
+<form action="/predict_1" method="POST">
+                <input type="hidden" name="selected_symptoms" id="selected_symptoms_input">
+                <input type="hidden" name="selected_symptoms_frommodel" id="selected_symptoms_frommodel">
+                <button type="submit" class="next" onclick="document.getElementById('selected_symptoms_input').value = Array.from(selectedSymptoms).join(',');">Next</button>
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+while executingthese i want to render loading page after these excecution we will be rendering prediction.html

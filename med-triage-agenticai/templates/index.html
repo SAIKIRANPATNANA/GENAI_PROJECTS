@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disease Prediction System</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-image: url("static/images/stethoscope.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+
+      .container {
+        min-height: 100vh;
+        display: flex;
+        padding: 2rem;
+      }
+
+      .left-section {
+        flex: 1;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5rem;
+        padding-top: 8rem;
+      }
+
+      .stethoscope {
+        width: 150px;
+        object-fit: contain;
+      }
+
+      .text-content {
+        max-width: 450px;
+        margin-left: 6rem;
+        animation: slideFromLeft 1s ease-out forwards;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #000;
+        margin-bottom: 2rem;
+      }
+
+      p {
+        font-size: 1.1rem;
+        color: #333;
+        line-height: 1.6;
+        margin-bottom: 0.8rem;
+      }
+
+      .right-section {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 3rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        max-width: 500px;
+        margin-top: 2rem;
+        animation: slideFromRight 1s ease-out forwards;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.3);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease,
+          box-shadow 0.3s ease;
+        transform: translateX(0);
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        background: white;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+      }
+
+      .card img {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 0.8rem;
+      }
+
+      .card h3 {
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .card-grid {
+          grid-template-columns: 1fr;
+          padding: 1rem;
+        }
+      }
+
+      /* Add keyframes for left slide animation */
+      @keyframes slideFromLeft {
+        0% {
+          transform: translateX(-100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      /* Add keyframes for right slide animation */
+      @keyframes slideFromRight {
+        0% {
+          transform: translateX(100%);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="left-section">
+        <div class="text-content">
+          <h1>Disease Prediction System</h1>
+          <p>
+            Select the symptoms you think you might have and it will predict the
+            disease or condition you could be suffering from.
+          </p>
+          <p>Then you could also look for hospitals/clinics for treatment.</p>
+          <p>
+            Finally your suggestions or comments in the comment box are always
+            welcome.
+          </p>
+        </div>
+      </div>
+
+      <div class="right-section">
+        <div class="card-grid">
+          <div class="card" onclick="window.location.href='/sel_sym'">
+            <img src="{{ url_for('static', filename='images/checklist.jpeg') }}" alt="Description">
+            <h3>Select Symptoms</h3>
+          </div>
+
+          <div class="card" onclick="navigate('diagnosis')">
+            <img src="{{ url_for('static', filename='images/diagnosis.jpeg') }}" alt="Diagnosis" />
+            <h3>Diagnosis & Treatment</h3>
+          </div>
+
+          <div class="card" onclick="navigate('hospitals')">
+            <img src="{{ url_for('static', filename='images/hospital.png') }}" alt="Hospitals" />
+            <h3>Hospitals</h3>
+          </div>
+
+          <div class="card" onclick="navigate('comments')">
+            <img src="{{ url_for('static', filename='images/review.jpg') }}" alt="Comments" />
+            <h3>Comments</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

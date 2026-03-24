@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Symptom Analysis | MediAssist</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3367d6;
+            --secondary-color: #f8f9fa;
+            --accent-color: #34a853;
+            --text-color: #202124;
+            --light-text: #5f6368;
+            --border-radius: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        .app-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 15px;
+        }
+        
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .app-logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        
+        .app-logo i {
+            margin-right: 10px;
+            font-size: 32px;
+            color: var(--accent-color);
+        }
+        
+        .app-description {
+            color: var(--light-text);
+            font-size: 16px;
+            max-width: 600px;
+            margin: 0 auto 20px;
+        }
+        
+        .chat-panel {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 70vh;
+            position: relative;
+        }
+        
+        .chat-header {
+            padding: 15px 20px;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .chat-header-avatar {
+            width: 36px;
+            height: 36px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+        }
+        
+        .chat-header-avatar i {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+        
+        .chat-header-title {
+            font-weight: 600;
+        }
+        
+        .chat-header-status {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .chat-container {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 20px;
+            background-color: #f9fafc;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .message {
+            padding: 12px 16px;
+            margin-bottom: 16px;
+            border-radius: 18px;
+            max-width: 80%;
+            animation: fadeIn 0.3s ease;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .user-message {
+            background-color: var(--primary-color);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+            align-self: flex-end;
+        }
+        
+        .assistant-message {
+            background-color: white;
+            color: var(--text-color);
+            margin-right: auto;
+            border-bottom-left-radius: 4px;
+            align-self: flex-start;
+            border-left: 3px solid var(--accent-color);
+        }
+        
+        .assistant-message h2,
+        .assistant-message h3 {
+            margin-top: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .assistant-message h4 {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .assistant-message ul, 
+        .assistant-message ol {
+            padding-left: 20px;
+        }
+        
+        .assistant-message strong {
+            color: var(--primary-color);
+        }
+        
+        .assistant-message em {
+            color: var(--light-text);
+            font-style: normal;
+        }
+        
+        .message-time {
+            font-size: 10px;
+            opacity: 0.7;
+            text-align: right;
+            margin-top: 5px;
+        }
+        
+        .message-avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            position: absolute;
+            bottom: -5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: white;
+        }
+        
+        .user-avatar {
+            background-color: #9e58dc;
+            right: -8px;
+        }
+        
+        .assistant-avatar {
+            background-color: var(--accent-color);
+            left: -8px;
+        }
+        
+        .symptom-summary {
+            background-color: rgba(51, 103, 214, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+        }
+        
+        .symptom-summary h5 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .symptom-summary h5 i {
+            margin-right: 8px;
+        }
+        
+        .symptom-details {
+            background-color: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .symptom-details h4 {
+            color: var(--accent-color);
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .symptom-details h4 i {
+            margin-right: 8px;
+        }
+        
+        .symptom-details ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .symptom-details li {
+            margin-bottom: 8px;
+        }
+        
+        .symptom-details strong {
+            color: var(--primary-color);
+        }
+        
+        .loading {
+            display: none;
+            padding: 15px;
+            text-align: center;
+            color: var(--light-text);
+        }
+        
+        .loading-indicator {
+            display: inline-block;
+            position: relative;
+            width: 50px;
+            height: 10px;
+        }
+        
+        .loading-indicator span {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            animation: loading 1.5s infinite ease-in-out;
+        }
+        
+        .loading-indicator span:nth-child(1) {
+            left: 0;
+            animation-delay: 0s;
+        }
+        
+        .loading-indicator span:nth-child(2) {
+            left: 20px;
+            animation-delay: 0.2s;
+        }
+        
+        .loading-indicator span:nth-child(3) {
+            left: 40px;
+            animation-delay: 0.4s;
+        }
+        
+        @keyframes loading {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.5); opacity: 0.5; }
+        }
+        
+        .message-input-container {
+            padding: 15px;
+            background-color: white;
+            border-top: 1px solid #eaeaea;
+        }
+        
+        .message-form {
+            display: flex;
+            align-items: center;
+        }
+        
+        .message-input {
+            flex-grow: 1;
+            border: 1px solid #e0e0e0;
+            border-radius: 24px;
+            padding: 12px 20px;
+            font-size: 14px;
+            background-color: #f5f7fa;
+            transition: all 0.2s;
+        }
+        
+        .message-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(51, 103, 214, 0.2);
+        }
+        
+        .message-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 24px;
+            width: 44px;
+            height: 44px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .message-submit:hover {
+            background-color: #2956b2;
+            transform: scale(1.05);
+        }
+        
+        .message-submit:active {
+            transform: scale(0.95);
+        }
+        
+        .book-btn-container {
+            text-align: center;
+            margin-top: 20px;
+            padding: 0 20px;
+        }
+        
+        .book-btn {
+            display: none;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 12px rgba(52, 168, 83, 0.3);
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .book-btn:hover {
+            background-color: #2b9248;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(52, 168, 83, 0.4);
+        }
+        
+        .book-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 8px rgba(52, 168, 83, 0.4);
+        }
+        
+        .book-btn i {
+            margin-right: 8px;
+        }
+        
+        @media (max-width: 768px) {
+            .message {
+                max-width: 90%;
+            }
+            
+            .chat-panel {
+                height: 75vh;
+            }
+        }
+
+        /* Better styling for markdown headers */
+        .assistant-message h1,
+        .assistant-message h2,
+        .assistant-message h3,
+        .assistant-message h4,
+        .assistant-message h5,
+        .assistant-message h6 {
+            color: var(--primary-color);
+            margin-top: 0.8em;
+            margin-bottom: 0.4em;
+            line-height: 1.4;
+        }
+
+        .assistant-message h1 { font-size: 22px; }
+        .assistant-message h2 { font-size: 20px; }
+        .assistant-message h3 { font-size: 18px; }
+        .assistant-message h4 { font-size: 16px; }
+        .assistant-message h5 { font-size: 14px; }
+        .assistant-message h6 { font-size: 13px; }
+
+        /* Better styling for lists */
+        .assistant-message ul {
+            list-style-type: disc;
+            padding-left: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .assistant-message ol {
+            list-style-type: decimal;
+            padding-left: 1.5em;
+            margin-bottom: 1em;
+        }
+
+        .assistant-message li {
+            margin-bottom: 0.4em;
+        }
+
+        /* Better styling for code blocks */
+        .assistant-message pre {
+            background-color: #f5f7fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 1em 0;
+            border-left: 3px solid var(--primary-color);
+        }
+
+        .assistant-message code {
+            font-family: Monaco, Consolas, 'Courier New', monospace;
+            font-size: 90%;
+            background-color: rgba(51, 103, 214, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+
+        /* Better styling for blockquotes */
+        .assistant-message blockquote {
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+            margin-left: 0;
+            margin-right: 0;
+            font-style: italic;
+            color: var(--light-text);
+        }
+
+        /* Better styling for tables */
+        .assistant-message table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 1em 0;
+        }
+
+        .assistant-message th,
+        .assistant-message td {
+            border: 1px solid #e0e0e0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+
+        .assistant-message th {
+            background-color: rgba(51, 103, 214, 0.1);
+            font-weight: 600;
+        }
+
+        .assistant-message tr:nth-child(even) {
+            background-color: #f9fafc;
+        }
+
+        /* Horizontal rule styling */
+        .assistant-message hr {
+            border: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 1.5em 0;
+        }
+
+        /* Links styling */
+        .assistant-message a {
+            color: var(--primary-color);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--primary-color);
+        }
+
+        .assistant-message a:hover {
+            color: #2956b2;
+            border-bottom: 1px solid #2956b2;
+        }
+
+        /* Emoji styling */
+        .assistant-message img.emoji {
+            height: 1.2em;
+            width: 1.2em;
+            margin: 0 0.1em;
+            vertical-align: -0.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <div class="app-header">
+            <div class="app-logo">
+                <i class="fas fa-heartbeat"></i>
+                <span>MediAssist</span>
+            </div>
+            <p class="app-description">AI-powered symptom analysis to help you understand your health concerns and connect with the right specialists</p>
+        </div>
+
+        <div class="chat-panel">
+            <div class="chat-header">
+                <div class="chat-header-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div>
+                    <div class="chat-header-title">Medical Assistant</div>
+                    <div class="chat-header-status">Online | AI-powered</div>
+                </div>
+            </div>
+
+            <!-- Chat container -->
+            <div id="chatContainer" class="chat-container">
+                {% if conversation %}
+                    {% for message in conversation %}
+                        {% if message.__class__.__name__ == 'HumanMessage' %}
+                            <div class="message user-message">
+                                {{ message.content }}
+                                <div class="message-avatar user-avatar">
+                                    <i class="fas fa-user"></i>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="message assistant-message">
+                                {{ message.content|safe }}
+                                <div class="message-avatar assistant-avatar">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div class="message assistant-message">
+                        <h3>👋 Hello!</h3>
+                        <p>I'm your AI Medical Assistant. I'm here to help analyze your symptoms and connect you with the right healthcare professionals.</p>
+                        <p>Please share your symptoms with me, and I'll guide you through some questions to better understand your situation.</p>
+                        <div class="message-avatar assistant-avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            
+            <div id="loading" class="loading">
+                <span>Analyzing your response</span>
+                <div class="loading-indicator">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            
+            <!-- Message input -->
+            <div class="message-input-container">
+                <form id="messageForm" class="message-form">
+                    <input type="text" id="userMessage" class="message-input" placeholder="Type your message here..." required>
+                    <button type="submit" class="message-submit">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Book Appointment Button -->
+        <div class="book-btn-container">
+            <a id="bookAppointmentBtn" href="{{ url_for('book_appointment') }}" class="book-btn">
+                <i class="fas fa-calendar-check"></i>
+                Book Appointment with Specialist
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatContainer = document.getElementById('chatContainer');
+            const messageForm = document.getElementById('messageForm');
+            const userMessageInput = document.getElementById('userMessage');
+            const loadingIndicator = document.getElementById('loading');
+            const bookAppointmentBtn = document.getElementById('bookAppointmentBtn');
+            
+            // Function to get current time in HH:MM format
+            function getCurrentTime() {
+                const now = new Date();
+                const hours = String(now.getHours()).padStart(2, '0');
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                return `${hours}:${minutes}`;
+            }
+            
+            // Auto-scroll to bottom of chat
+            if (chatContainer) {
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+            
+            // Handle form submission
+            if (messageForm) {
+                messageForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const message = userMessageInput.value.trim();
+                    if (!message) return;
+                    
+                    // Add user message to chat
+                    const userMsgElement = document.createElement('div');
+                    userMsgElement.className = 'message user-message';
+                    userMsgElement.innerHTML = `
+                        ${message}
+                        <div class="message-time">${getCurrentTime()}</div>
+                        <div class="message-avatar user-avatar">
+                            <i class="fas fa-user"></i>
+                        </div>
+                    `;
+                    chatContainer.appendChild(userMsgElement);
+                    
+                    // Clear input
+                    userMessageInput.value = '';
+                    
+                    // Show loading indicator
+                    loadingIndicator.style.display = 'block';
+                    
+                    // Auto-scroll
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                    
+                    // Send message to backend
+                    fetch('/api/send_message', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({message: message})
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        // Hide loading
+                        loadingIndicator.style.display = 'none';
+                        
+                        // Add AI response with markdown parsing
+                        const aiMsgElement = document.createElement('div');
+                        aiMsgElement.className = 'message assistant-message';
+                        
+                        // Parse markdown to HTML
+                        const parsedMessage = marked.parse(data.message);
+                        
+                        aiMsgElement.innerHTML = `
+                            ${parsedMessage}
+                            <div class="message-time">${getCurrentTime()}</div>
+                            <div class="message-avatar assistant-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        `;
+                        
+                        chatContainer.appendChild(aiMsgElement);
+                        
+                        // IMPORTANT: Don't show the symptom details UI anymore
+                        // This section is completely removed
+                        
+                        // Show book appointment button if analysis is complete
+                        if (data.show_booking) {
+                            bookAppointmentBtn.style.display = 'inline-block';
+                            bookAppointmentBtn.classList.add('pulse-animation');
+                        }
+                        
+                        // Auto-scroll
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    })
+                    .catch(error => {
+                        // Hide loading
+                        loadingIndicator.style.display = 'none';
+                        
+                        // Show error message
+                        const errorMsg = document.createElement('div');
+                        errorMsg.className = 'message assistant-message';
+                        errorMsg.innerHTML = `
+                            <p><i class="fas fa-exclamation-triangle"></i> Sorry, there was an error connecting to the server. Please try again later.</p>
+                            <div class="message-time">${getCurrentTime()}</div>
+                            <div class="message-avatar assistant-avatar">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                        `;
+                        chatContainer.appendChild(errorMsg);
+                        
+                        // Auto-scroll
+                        chatContainer.scrollTop = chatContainer.scrollHeight;
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

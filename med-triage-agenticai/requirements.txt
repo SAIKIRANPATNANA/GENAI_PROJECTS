@@ -1,0 +1,43 @@
+# Flask and web framework requirements
+flask
+werkzeug
+jinja2
+itsdangerous
+click
+markupsafe
+
+# LangChain and AI requirements
+langchain
+langchain-core
+langchain-groq
+groq
+openai
+
+# Markdown processing
+markdown
+marked
+
+# Google APIs and authentication
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+httplib2
+
+# Email and MIME handling
+email-validator
+
+# Security and file handling
+python-dotenv
+cryptography
+
+# Utilities
+requests
+pytz
+python-dateutil
+six
+
+# Development tools (optional)
+pytest
+black
+flake8

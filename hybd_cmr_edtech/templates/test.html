@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPT to PDF Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .upload-form {
+            margin: 20px 0;
+        }
+        #status {
+            margin-top: 20px;
+            padding: 10px;
+            display: none;
+        }
+        .success {
+            background-color: #dff0d8;
+            color: #3c763d;
+            border: 1px solid #d6e9c6;
+        }
+        .error {
+            background-color: #f2dede;
+            color: #a94442;
+            border: 1px solid #ebccd1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PPT to PDF Converter</h1>
+        <div class="upload-form">
+            <form id="uploadForm" enctype="multipart/form-data">
+                <input type="file" id="pptFile" name="file" accept=".ppt,.pptx" required>
+                <button type="submit">Convert to PDF</button>
+            </form>
+        </div>
+        <div id="status"></div>
+    </div>
+
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData();
+            const fileInput = document.getElementById('pptFile');
+            const statusDiv = document.getElementById('status');
+            
+            formData.append('file', fileInput.files[0]);
+            
+            try {
+                statusDiv.innerHTML = 'Converting...';
+                statusDiv.className = '';
+                statusDiv.style.display = 'block';
+                
+                const response = await fetch('/convert', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (response.ok) {
+                    statusDiv.innerHTML = 'Conversion successful! <a href="' + result.pdf_url + '" target="_blank">Download PDF</a>';
+                    statusDiv.className = 'success';
+                } else {
+                    throw new Error(result.error || 'Conversion failed');
+                }
+            } catch (error) {
+                statusDiv.innerHTML = 'Error: ' + error.message;
+                statusDiv.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>

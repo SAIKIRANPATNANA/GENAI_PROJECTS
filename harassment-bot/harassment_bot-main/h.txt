@@ -1,0 +1,14 @@
+messages = {
+    "welcome_message": "Hello! Welcome to the Griviance Chatbot. May I have your name, please?",
+    "greet_user": "Nice to meet you, {username}! How can I assist you today?",
+    # "capture_details": "You've selected to report a harassment incident. Let's start with the details. Where did the incident happen?",
+    # "ask_date_time": "Thank you for sharing that. When did the incident happen? Please provide the date and time.",
+    # "ask_description": "Got it. Please describe exactly what happened.",
+    # "ask_involved": "Thank you for the description. Who was involved? Please list all people involved (victim, harasser, witnesses).",
+    # "ask_feelings": "I appreciate that information. How did the situation make you feel? (e.g., fear, anger, sadness)?",
+    # "ask_danger": "Was anyone in danger? Describe any injuries or threatening actions.",
+    # "ask_additional_details": "Is there anything else you would like to share about this incident?",
+    "ask_next_option": "Does this answer your question or would you like to add more detail?",
+    "end_chat": "Thank you for using the Harassment Reporting Chatbot.Your report has been recorded anonymously, and your identity is protected. If you need further assistance or wish to report another incident, please feel free to reach out. We are here to support you and ensure your safety at all times.",
+    "invalid_option": "I'm sorry, I didn't understand that."
+}
