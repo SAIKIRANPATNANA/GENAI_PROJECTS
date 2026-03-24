@@ -4,7 +4,7 @@ This repository groups together my Generative AI projects in one place for clean
 
 ## Included Projects
 
-- `ats`
+- `ats-using-gemini`
 - `calorie-calc-using-gpv`
 - `disease-diagnosis-dhanvantari`
 - `harassment-bot`
