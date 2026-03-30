@@ -1,6 +1,7 @@
-
+import os
 import google.generativeai as genai
-genai.configure(api_key='AIzaSyAFTm-mUcFxAakOw_qks3luweKHLmGhNlQ')
+
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 def getResponse():
     try:
         model = genai.GenerativeModel(model_name="gemini-1.5-pro")

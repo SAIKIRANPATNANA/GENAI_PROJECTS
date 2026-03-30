@@ -2,9 +2,16 @@
 
 This repository groups together my Generative AI projects in one place for cleaner portfolio management and easier exploration.
 
+Recent additions in this repository also include content-focused GenAI systems:
+
+- `blog-generation-agenticai` for AI-assisted long-form blog drafting and content generation workflows.
+- `ainews-generation-agenticai` for AI-driven news generation, summarization, and topic-oriented publishing ideas.
+
 ## Included Projects
 
+- `ainews-generation-agenticai`
 - `ats-using-gemini`
+- `blog-generation-agenticai`
 - `calorie-calc-using-gpv`
 - `disease-diagnosis-dhanvantari`
 - `harassment-bot`
