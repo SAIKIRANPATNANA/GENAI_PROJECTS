@@ -1,0 +1,101 @@
+{
+  "ehr": "# Electronic Health Report\n\n## Patient Information\n- **Name:** Mr. P SRINIVASA RAO\n- **Age:** 54 years\n- **Gender:** Male\n- **Patient ID:** D-28202\n- **Sample Collected At:** XYZ Lab\n\n## Lab Information\n- **Lab Name:** ABC Diagnostics\n- **Address:** 123 Street, City\n- **Contact:** +91 9876543210\n- **Instruments Used:** Automated Hematology Analyzer\n\n## Medical Personnel\n- **Technician:** Jane Smith\n- **Pathologists:**\n  - Dr. A. Kumar (MD Pathology)\n  - Dr. B. Sharma (MD Pathology)\n\n## Conducted Tests & Results\n\n### Complete Blood Count (CBC)\n- **Hemoglobin:** 11.8 g/dL _(Low)_\n- **Total WBC Count:** 9,700 /cmm _(Normal)_\n- **Platelet Count:** 3,68,000 /cmm _(Normal)_\n- **Haematocrit (HCT):** 33.0 % _(Low)_\n- **RBC Count:** 4.60 mil./cmm _(Normal)_\n- **MCV:** 71.6 fL _(Low)_\n- **MCH:** 25.6 pg _(Low)_\n- **MCHC:** 35.7 gm/dl _(Normal)_\n- **RDW-CV:** 13.2 % _(Normal)_\n- **RDW-SD:** 38.7 fL _(Normal)_\n- **MPV:** 7.6 fL _(Normal)_\n- **PDW-CV:** 14.7 fL _(Normal)_\n- **PCT:** 0.279 % _(Normal)_\n- **ESR:** 40 mm/hr _(High)_\n\n### Liver Function Test (LFT)\n- **Bilirubin Total:** 1.1 mg/dL _(Normal)_\n- **Bilirubin Direct:** 0.2 mg/dL _(Normal)_\n- **Bilirubin Indirect:** 0.90 mg/dL _(High)_\n- **SGOT (AST):** 13.96 U/L _(Normal)_\n- **SGPT (ALT):** 22.69 U/L _(Normal)_\n- **Alkaline Phosphatase:** 118.62 U/L _(High)_\n- **Protein Total:** 7.80 g/dL _(Normal)_\n- **Albumin:** 3.96 g/dL _(Normal)_\n- **Globulin:** 3.84 g/dL _(High)_\n- **A/G Ratio:** 1.03 _(Normal)_\n\n### Thyroid Function Test (TFT)\n- **TOTAL TRIIODOTHYRONINE (T3):** 96.05 ng/dl _(Normal)_\n- **TOTAL THYROXINE (T4):** 11.43 µg/dL _(Normal)_\n- **THYROID STIMULATING HORMONE (TSH):** 2.63 µIU/mL _(Normal)_\n\n### Urine Examination\n- **Leucocyte:** Negative _(Normal)_\n- **Colour:** Pale Yellow _(Normal)_\n- **Appearance:** Clear _(Normal)_\n- **Specific Gravity:** 1.015 _(Normal)_\n- **pH:** 6.0 _(Normal)_\n- **Blood:** Negative _(Normal)_\n- **Protein:** Trace _(High)_\n- **Sugar:** 2+ _(High)_\n- **Ketones:** Negative _(Normal)_\n- **Bile Salt:** Negative _(Normal)_\n- **Bile Pigment:** Negative _(Normal)_\n- **Urobilinogen:** Normal _(Normal)_\n- **Pus Cell:** 5-6 _(High)_\n- **Epithelial Cells:** 3-4 _(Normal)_\n- **Red Blood Cells:** Nil _(Normal)_\n- **Casts:** Nil _(Normal)_\n- **Crystals:** Nil _(Normal)_\n- **Amorphous Deposit:** Nil _(Normal)_\n- **Yeast Cells:** Nil _(Normal)_\n- **Bacteria:** Nil _(Normal)_\n\n### Vitamin D & B12\n- **Vitamin D:** 15.76 ng/ml _(Low)_\n- **Vitamin B12:** 156.58 pg/mL _(Normal)_\n\n### 2D ECHO\n- **MITRAL VALVE:** Normal\n- **AORTIC VALVE:** Normal\n- **PULMONARY VALVE:** Normal\n- **TICUSPID VALVE:** Normal\n- **LEFT ATRIUM:** 3.4cm. _(Normal)_\n- **LEFT VENTRICLE:**\n  - **EDD:** 4.4 cms\n  - **EF:** 66%\n  - **ESD:** 2.7 cms\n- **IVS(D):** 1.1 cm _(Normal)_\n- **PW(D):** 1.1 cm _(Normal)_\n- **RIGHT ATRIUM:** Normal\n- **RIGHT VENTRICLE:** Normal\n- **AORTA:** 2.8cm _(Normal)_\n- **PULMONARY ARTERY:** Normal\n- **IAS:** Intact\n- **IVS:** Intact\n- **SVC/IVC:** Normal\n- **PERICARDIUM:** Normal\n- **DOPPLER STUDY:**\n  - **PJV:** 0.90 m/sec\n  - **MVF:** E > A\n  - **AJV:** 1.40 m/sec\n  - **RVSP:** 35 mm/Hg\n\n### Blood Sugar & Lipid Profile\n- **Post Prandial Blood Sugar (PPBS):** 138 _(High)_\n- **Serum Creatinine:** 0.9 mg/dl _(Normal)_\n- **Blood Urea:** 24.72 mg/dl _(Normal)_\n- **Uric Acid:** 5.46 mg/dl _(Normal)_\n- **HbA1c:** 9.19 % _(High)_\n- **AVERAGE BLOOD GLUCOSE (ABG):** 217.05 mg/dl _(High)_\n- **Total Cholesterol:** 195.17 mg/dl _(Normal)_\n- **Triglycerides:** 198.46 mg/dl _(High)_\n- **HDL Cholesterol:** 48.92 mg/dl _(Normal)_\n- **Non HDL Cholesterol:** 146.25 mg/dl\n- **LDL Cholesterol:** 106.56 mg/dl _(High)_\n- **VLDL Cholesterol:** 39.69 mg/dl\n\n## Abnormal Parameters\n- **Hemoglobin:** 11.8 g/dL _(Low)_\n- **Haematocrit (HCT):** 33.0 % _(Low)_\n- **MCV:** 71.6 fL _(Low)_\n- **MCH:** 25.6 pg _(Low)_\n- **Bilirubin Indirect:** 0.90 mg/dL _(High)_\n- **Alkaline Phosphatase:** 118.62 U/L _(High)_\n- **Globulin:** 3.84 g/dL _(High)_\n- **Vitamin D:** 15.76 ng/ml _(Low)_\n- **Protein:** Trace _(High)_\n- **Sugar:** 2+ _(High)_\n- **Pus Cell:** 5-6 _(High)_\n- **Post Prandial Blood Sugar (PPBS):** 138 _(High)_\n- **HbA1c:** 9.19 % _(High)_\n- **AVERAGE BLOOD GLUCOSE (ABG):** 217.05 mg/dl _(High)_\n- **Triglycerides:** 198.46 mg/dl _(High)_\n- **LDL Cholesterol:** 106.56 mg/dl _(High)_",
+  "lab_results": {
+    "AVERAGE BLOOD GLUCOSE (ABG)": {
+      "reference_range": "90-120",
+      "status": "High",
+      "unit": "mg/dl",
+      "value": "217.05"
+    },
+    "Alkaline Phosphatase": {
+      "reference_range": "46-116",
+      "status": "High",
+      "unit": "U/L",
+      "value": "118.62"
+    },
+    "Bilirubin Indirect": {
+      "reference_range": "0.2-0.8",
+      "status": "High",
+      "unit": "mg/dL",
+      "value": "0.90"
+    },
+    "Globulin": {
+      "reference_range": "2.5-3.3",
+      "status": "High",
+      "unit": "g/dL",
+      "value": "3.84"
+    },
+    "Haematocrit (HCT)": {
+      "reference_range": "35.0-50.0",
+      "status": "Low",
+      "unit": "%",
+      "value": "33.0"
+    },
+    "HbA1c": {
+      "reference_range": "<6.0%",
+      "status": "High",
+      "unit": "%",
+      "value": "9.19"
+    },
+    "Hemoglobin": {
+      "reference_range": "14-18",
+      "status": "Low",
+      "unit": "g/dL",
+      "value": "11.8"
+    },
+    "LDL Cholesterol": {
+      "reference_range": "<100",
+      "status": "High",
+      "unit": "mg/dl",
+      "value": "106.56"
+    },
+    "MCH": {
+      "reference_range": "27.0-34.0",
+      "status": "Low",
+      "unit": "pg",
+      "value": "25.6"
+    },
+    "MCV": {
+      "reference_range": "82.0-100.0",
+      "status": "Low",
+      "unit": "fL",
+      "value": "71.6"
+    },
+    "Post Prandial Blood Sugar (PPBS)": {
+      "reference_range": "70-110",
+      "status": "High",
+      "unit": "",
+      "value": "138"
+    },
+    "Protein": {
+      "reference_range": "Negative",
+      "status": "High",
+      "unit": "",
+      "value": "Trace"
+    },
+    "Pus Cell": {
+      "reference_range": "Upto 5",
+      "status": "High",
+      "unit": "/hpf",
+      "value": "5-6"
+    },
+    "Sugar": {
+      "reference_range": "Negative",
+      "status": "High",
+      "unit": "",
+      "value": "2+"
+    },
+    "Triglycerides": {
+      "reference_range": "<150",
+      "status": "High",
+      "unit": "mg/dl",
+      "value": "198.46"
+    },
+    "Vitamin D": {
+      "reference_range": ">=20",
+      "status": "Low",
+      "unit": "ng/ml",
+      "value": "15.76"
+    }
+  }
+}

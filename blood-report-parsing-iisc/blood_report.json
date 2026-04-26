@@ -1,0 +1,42 @@
+{
+  "lab_info": {
+    "generated_on": "02 Dec, 202X 05:00 PM",
+    "instruments": "",
+    "lab_address": "105-108, SMART VISION COMPLEX, HEALTHCARE ROAD, OPPOSITE HEALTHCARE COMPLEX, MUMBAI - 689578",
+    "lab_contact": {
+      "email": "drlogypathlab@drlogy.com",
+      "phone": "0123456789 | 0912345678"
+    },
+    "lab_name": "DRLOGY PATHOLOGY LAB",
+    "website": "www.drlogy.com"
+  },
+  "lab_results": {
+    "Hemoglobin": {
+      "reference_range": "13.5-17.5",
+      "status": "Normal",
+      "unit": "g/dL",
+      "value": "14"
+    }
+  },
+  "medical_personnel": {
+    "medical_lab_technician": "Dr. Payal Shah (DMLT, BMLT)",
+    "pathologists": [
+      {
+        "name": "Dr. Vimal Shah",
+        "qualification": "MD, Pathologist"
+      }
+    ]
+  },
+  "patient_info": {
+    "age": "21 Years",
+    "collected_on": "07:30PM 04 Jan, 25",
+    "gender": "Male",
+    "name": "Yash M. Patel",
+    "patient_id": "PID : 555",
+    "referred_by": "Dr. Hiren Shah",
+    "registered_on": "07:23PM 04 Jan, 25",
+    "reported_on": "07:50PM 04 Jan, 25",
+    "sample_collected_at": "125, Shwam Bungalow, S G Road, Mumbai"
+  },
+  "test_name": "HEMOGLOBIN (HB)"
+}

@@ -1,0 +1,89 @@
+{
+  "ehr": "# Patient Information\n- Name: Lyubochka Svetka\n- Age: 41 years\n- Gender: Male\n- Lab ID: 02232160XXXX\n- Date of Report: 28-Feb-2023\n\n# Complete Blood Count\n- Hemoglobin: 14.5 g/dL (Normal)\n- RBC Count: 4.79 million/cmm (Normal)\n- Hematocrit: 43.3% (Normal)\n- MCV: 90.3 fL (Normal)\n- MCH: 30.2 pg (Normal)\n- MCHC: 33.4 g/dL (Normal)\n- RDW CV: 13.60% (Normal)\n- WBC Count: 10570 /cmm (High)\n  - Neutrophils: 73% (Normal)\n  - Lymphocytes: 19% (Low)\n  - Eosinophils: 2% (Normal)\n  - Monocytes: 6% (Normal)\n  - Basophils: 0% (Normal)\n- Platelet Count: 150000 /cmm (Normal)\n- MPV: 14.00 fL (High)\n- RBC Morphology: Normochromic Normocytic\n- WBC Morphology: Normal\n- Platelets Morphology: Normal\n\n# Blood Group\n- ABO Type: A\n- Rh (D) Type: Positive\n\n# Lipid Profile\n- Cholesterol: 189.0 mg/dL (Desirable)\n- Triglycerides: 168.0 mg/dL (High)\n- HDL Cholesterol: 60.0 mg/dL (High)\n- Direct LDL: 100.39 mg/dL (High)\n- VLDL: 33.60 mg/dL (Normal)\n- CHOL/HDL Ratio: 3.1\n- LDL/HDL Ratio: 1.7\n\n# Biochemistry\n- Fasting Blood Sugar: 141.0 mg/dL (High)\n- HbA1c: 7.10% (High)\n- Mean Blood Glucose: 157.07 mg/dL\n- T3: 1.01 ng/mL (Normal)\n- T4: 7.84 mg/mL (Normal)\n- TSH: 0.8199 microlU/mL (Normal)\n- Microalbumin (per urine volume): 10.50 mg/L (Normal)\n- Total Protein: 7.00 g/dL (Normal)\n- Albumin: 4.20 g/dL (Normal)\n- Globulin: 2.80 g/dL (Normal)\n- A/G Ratio: 1.50 (Normal)\n- Total Bilirubin: 0.70 mg/dL (Normal)\n- Conjugated Bilirubin: 0.30 mg/dL (Normal)\n- Unconjugated Bilirubin: 0.20 mg/dL (Normal)\n- Delta Bilirubin: 0.20 mg/dL (Normal)\n- Iron: 103.00 micro g/dL (Normal)\n- Total Iron Binding Capacity (TIBC): 352.00 (Normal)\n- Transferrin Saturation: 29.26% (Normal)\n- Homocysteine: 23.86 micromol/L (High)\n- Creatinine: 0.83 mg/dL (Normal)\n- Urea: 18.0 mg/dL (Low)\n- Blood Urea Nitrogen: 8.41 mg/dL (Low)\n- Uric Acid: 4.90 mg/dL (Normal)\n- Calcium: 9.10 mg/dL (Normal)\n- SGPT: 48.0 U/L (Normal)\n- SGOT: 27.0 U/L (Normal)\n- Sodium (Na+): 143.00 mmol/L (Normal)\n- Potassium (K+): 4.90 mmol/L (Normal)\n- Chloride (Cl-): 105.0 mmol/L (Normal)\n- 25(OH) Vitamin D: 8.98 ng/mL (Deficient)\n- Vitamin B12: <148 pg/mL (Low)\n- PSA: 0.573 ng/mL (Normal)\n- IgE: 492.30 IU/mL (High)\n- HIV I & II Ab/Ag with P24 Ag: Non-Reactive\n- HBsAg: Non-Reactive\n\n# Hemoglobin Electrophoresis\n- Hb A: 84.4% (Low)\n- Hb A2: 2.8% (Normal)\n- Hb F: 0.3% (Normal)\n- P2 Peak: 5.5%\n- P3 Peak: 5.2%\n\n# Urinalysis\n- Color: Pale Yellow\n- Clarity: Clear\n- pH: 6.0\n- Specific Gravity: 1.030\n- Glucose: Present\n- Protein: Absent\n- Bilirubin: Absent\n- Urobilinogen: Absent\n- Ketone: Absent\n- Nitrite: Absent\n- Pus Cells: 1-2\n- Red Cells: Nil\n- Epithelial Cells: 1-2\n- Casts: Absent\n- Crystals: Absent\n- Amorphous Material: Absent",
+  "lab_results": {
+    "25(OH) Vitamin D": {
+      "reference_range": "<10",
+      "status": "Deficient",
+      "unit": "ng/mL",
+      "value": "8.98"
+    },
+    "Blood Urea Nitrogen": {
+      "reference_range": "9.0 - 20.0",
+      "status": "Low",
+      "unit": "mg/dL",
+      "value": "8.41"
+    },
+    "Direct LDL": {
+      "reference_range": "<100",
+      "status": "High",
+      "unit": "mg/dL",
+      "value": "100.39"
+    },
+    "Fasting Blood Sugar": {
+      "reference_range": "74 - 106",
+      "status": "High",
+      "unit": "mg/dL",
+      "value": "141.0"
+    },
+    "Hb A": {
+      "reference_range": "96.8-97.8",
+      "status": "Low",
+      "unit": "%",
+      "value": "84.4"
+    },
+    "HbA1c": {
+      "reference_range": "<5.7",
+      "status": "High",
+      "unit": "%",
+      "value": "7.10"
+    },
+    "Homocysteine": {
+      "reference_range": "6.0 - 14.8",
+      "status": "High",
+      "unit": "micromol/L",
+      "value": "23.86"
+    },
+    "IgE": {
+      "reference_range": "0 - 87",
+      "status": "High",
+      "unit": "IU/mL",
+      "value": "492.30"
+    },
+    "Lymphocytes": {
+      "reference_range": "20-40",
+      "status": "Low",
+      "unit": "%",
+      "value": "19"
+    },
+    "MPV": {
+      "reference_range": "7.5 - 10.3",
+      "status": "High",
+      "unit": "fL",
+      "value": "14.00"
+    },
+    "Triglycerides": {
+      "reference_range": "<150",
+      "status": "High",
+      "unit": "mg/dL",
+      "value": "168.0"
+    },
+    "Urea": {
+      "reference_range": "19.3 - 43.0",
+      "status": "Low",
+      "unit": "mg/dL",
+      "value": "18.0"
+    },
+    "Vitamin B12": {
+      "reference_range": "187 - 833",
+      "status": "Low",
+      "unit": "pg/mL",
+      "value": "<148"
+    },
+    "WBC Count": {
+      "reference_range": "4000 - 10000",
+      "status": "High",
+      "unit": "/cmm",
+      "value": "10570"
+    }
+  }
+}

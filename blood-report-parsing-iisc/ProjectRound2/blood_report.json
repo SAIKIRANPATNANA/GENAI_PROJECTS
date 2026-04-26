@@ -1,0 +1,114 @@
+{
+  "lab_info": {
+    "generated_on": "17/10/2024",
+    "instruments": "Not explicitly mentioned",
+    "lab_address": "Not available",
+    "lab_contact": {
+      "email": "Not available",
+      "phone": "+911234567890"
+    },
+    "lab_name": "Labsmart Software",
+    "website": "httpe: May your asnamen"
+  },
+  "lab_results": {
+    "BASOPHILS": {
+      "reference_range": "Not provided",
+      "status": "Normal",
+      "unit": "%",
+      "value": "<2"
+    },
+    "EOSINOPHILS": {
+      "reference_range": "1-6",
+      "status": "Normal",
+      "unit": "%",
+      "value": "1"
+    },
+    "HEMATOCRIT VALUE, HCT": {
+      "reference_range": "40 - 50",
+      "status": "Normal",
+      "unit": "%",
+      "value": "42"
+    },
+    "HEMOGLOBIN": {
+      "reference_range": "13 - 17",
+      "status": "Normal",
+      "unit": "g/dl",
+      "value": "15"
+    },
+    "LYMPHOCYTE": {
+      "reference_range": "20-40",
+      "status": "Low",
+      "unit": "%",
+      "value": "18"
+    },
+    "MEAN CELL HAEMOGLOBIN CON, MCHC H": {
+      "reference_range": "31.5-34.5",
+      "status": "High",
+      "unit": "g/dl",
+      "value": "35.7"
+    },
+    "MEAN CELL HAEMOGLOBIN, MCH": {
+      "reference_range": "27-32",
+      "status": "Normal",
+      "unit": "pg",
+      "value": "30.0"
+    },
+    "MEAN CORPUSCULAR VOLUME, MCV": {
+      "reference_range": "83 - 101",
+      "status": "Normal",
+      "unit": "fL",
+      "value": "84.0"
+    },
+    "MONOCYTES": {
+      "reference_range": "2-10",
+      "status": "Normal",
+      "unit": "%",
+      "value": "2"
+    },
+    "NEUTROPHILS": {
+      "reference_range": "40-80",
+      "status": "Normal",
+      "unit": "%",
+      "value": "79"
+    },
+    "PLATELET COUNT": {
+      "reference_range": "1.5-4.1",
+      "status": "High",
+      "unit": "Lakhs/Cumm",
+      "value": "3.5"
+    },
+    "TOTAL LEUKOCYTE COUNT": {
+      "reference_range": "4,800 - 10,800",
+      "status": "Normal",
+      "unit": "cumm",
+      "value": "5,100"
+    },
+    "TOTAL RBC COUNT": {
+      "reference_range": "4.5-55",
+      "status": "Normal",
+      "unit": "million/cumm",
+      "value": "5"
+    }
+  },
+  "medical_personnel": {
+    "medical_lab_technician": "Not explicitly mentioned",
+    "pathologists": [
+      {
+        "name": "Dr. A. K. Asthana",
+        "qualification": "MBBS, MD Patholog st"
+      }
+    ]
+  },
+  "patient_info": {
+    "age": "27 YRS",
+    "collected_on": "17/10/2024",
+    "gender": "M",
+    "name": "Mr. Saubhik Bhaumik",
+    "patient_id": "1001",
+    "referred_by": "Not explicitly mentioned",
+    "registered_on": "17/10/2024 04:55 PM",
+    "reported_on": "17/10/2024 04:56 PM",
+    "sample_collected_at": "Not explicitly mentioned"
+  },
+  "test_name": "COMPLETE BLOOD COUNT (CBC)"
+}

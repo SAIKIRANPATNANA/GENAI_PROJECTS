@@ -6,12 +6,14 @@ Recent additions in this repository also include content-focused GenAI systems:
 
 - `blog-generation-agenticai` for AI-assisted long-form blog drafting and content generation workflows.
 - `ainews-generation-agenticai` for AI-driven news generation, summarization, and topic-oriented publishing ideas.
+- `blood-report-parsing-iisc` for AI-assisted blood report parsing, abnormality detection, and healthcare-oriented structured extraction.
 
 ## Included Projects
 
 - `ainews-generation-agenticai`
 - `ats-using-gemini`
 - `blog-generation-agenticai`
+- `blood-report-parsing-iisc`
 - `calorie-calc-using-gpv`
 - `disease-diagnosis-dhanvantari`
 - `harassment-bot`

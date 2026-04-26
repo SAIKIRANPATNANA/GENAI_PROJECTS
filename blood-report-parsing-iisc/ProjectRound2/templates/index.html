@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Report Analyzer</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='blood-test.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    {% if not session.get('user_id') %}
+    <script>window.location.href = "{{ url_for('login') }}";</script>
+    {% endif %}
+    <div class="container">
+        <header>
+            <h1>Blood Report Analyzer</h1>
+            <div class="user-info">
+                <span>Welcome, {{ session.get('name', '') }}</span>
+                <div class="button-group">
+                    <div class="history-container">
+                        <button id="historyBtn" class="history-btn">History</button>
+                        <div id="historyPanel" class="history-panel" style="display: none;">
+                            <div class="history-list">
+                                <div id="patientList" class="patient-list"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="logoutBtn" class="logout-btn">Logout</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="upload-section">
+                <h2>Upload Blood Report</h2>
+                <form id="uploadForm">
+                    <input type="file" id="reportFile" accept=".pdf,.jpg,.jpeg,.png" required>
+                    <button type="submit">Analyze Report</button>
+                </form>
+            </section>
+
+            <section class="results-section" style="display: none;">
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="report">EHR</button>
+                    <button class="tab-btn" data-tab="plots">Plots</button>
+                    <button class="tab-btn" data-tab="insights">Insights</button>
+                    <button class="tab-btn" data-tab="chat">Chat</button>
+                    <button class="tab-btn" data-tab="trends">Trends</button>
+                </div>
+
+                <div id="report" class="tab-content active">
+                    <h3>Report Details</h3>
+                    <div id="reportContent"></div>
+                </div>
+
+                <div id="plots" class="tab-content">
+                    <h3>Abnormal Parameters</h3>
+                    <div id="plotsContent"></div>
+                </div>
+
+                <div id="insights" class="tab-content">
+                    <h3>Medical Insights</h3>
+                    <div id="insightsContent"></div>
+                </div>
+
+                <div id="chat" class="tab-content">
+                    <h3>Chat with Assistant</h3>
+                    <div id="chatMessages"></div>
+                    <div class="chat-input">
+                        <input type="text" id="messageInput" placeholder="Type your message...">
+                        <button id="sendMessage">Send</button>
+                    </div>
+                </div>
+
+                <div id="trends" class="tab-content">
+                    <h3>Trends Analysis</h3>
+                    <div class="trends-controls">
+                        <select id="patientSelect" class="form-control">
+                            <option value="">Select Patient</option>
+                        </select>
+                        <select id="testNameSelect" class="form-control" disabled>
+                            <option value="">Select Test Name</option>
+                        </select>
+                        <select id="parameterSelect" class="form-control" disabled>
+                            <option value="">Select Parameter</option>
+                        </select>
+                    </div>
+                    <div id="trendsContent">
+                        <div id="trendsLoader" style="display: none;">
+                            <div class="spinner"></div>
+                            <p>Loading trends analysis...</p>
+                        </div>
+                        <div id="profileReport" style="width: 100%; height: 600px;"></div>
+                        <div id="trendPlot"></div>
+                    </div>
+                </div>
+            </section>
+
+            <div id="loader" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing report...</p>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
