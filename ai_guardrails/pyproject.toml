@@ -1,0 +1,16 @@
+[project]
+name = "guardrails-webinar-main"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastembed>=0.2.0",
+    "langchain>=0.2.0",
+    "langchain-core>=0.2.0",
+    "langchain-groq>=0.1.9",
+    "logfire>=3.0.0",
+    "nemoguardrails>=0.9.0",
+    "python-dotenv>=1.0.0",
+    "streamlit>=1.35.0",
+]
