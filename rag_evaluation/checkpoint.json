@@ -1,0 +1,110 @@
+{
+  "enriched": [
+    {
+      "id": "g001",
+      "metric_focus": "faithfulness",
+      "user_input": "What is TechNest's return policy?",
+      "reference": "TechNest accepts returns within 30 days of purchase. Items must be in original packaging with all accessories. Customers pay return shipping unless the item is defective. Refunds are processed in 5 to 7 business days.",
+      "retrieved_contexts": [
+        "TechNest accepts returns within 30 days of the original purchase date. Items must be in their original packaging with all accessories included. Customers are responsible for return shipping costs unless the item arrives defective or damaged. Refunds are processed within 5 to 7 business days of receiving the returned item. Digital downloads and opened software are non-refundable.",
+        "All TechNest products include a minimum 1-year manufacturer warranty covering defects in materials and workmanship. The ProBook X1 and SoundBar 360 include a 2-year warranty. Warranty does not cover physical damage, water damage (unless the product is rated waterproof), or damage from unauthorised modifications. To make a warranty claim, contact support@technest.com with your order number and a description of the issue.",
+        "TechNest offers free standard shipping on all orders over $50 within the continental US. Standard shipping takes 3 to 5 business days. Expedited shipping (1 to 2 business days) is available for $9.99. Same-day delivery is available in select cities for $19.99. Orders placed before 2pm local time are dispatched the same day."
+      ],
+      "response": "TechNest's return policy allows returns within 30 days of the original purchase date, as long as items are in their original packaging with all accessories included. You're responsible for return shipping costs unless the item arrives defective or damaged. Refunds are processed within 5 to 7 business days of receiving the returned item. Note that digital downloads and opened software are non-refundable."
+    },
+    {
+      "id": "g002",
+      "metric_focus": "answer_relevancy",
+      "user_input": "What are the RAM and storage specs of the ProBook X1?",
+      "reference": "The ProBook X1 has 16GB DDR5 RAM and a 512GB NVMe SSD.",
+      "retrieved_contexts": [
+        "The TechNest ProBook X1 is a 14-inch laptop featuring an Intel Core i7-13th Gen processor, 16GB DDR5 RAM, and a 512GB NVMe SSD. It has a battery life of 12 hours, weighs 1.4kg, and comes with a backlit keyboard. Price: $1,299. Includes a 2-year manufacturer warranty.",
+        "The TechNest PixelPhone 15 is a 6.7-inch AMOLED smartphone with a 50MP triple camera system, 8GB RAM, 256GB storage, and a 5,000mAh battery supporting 65W fast charging. Available in Midnight Black and Arctic White. Price: $899. Includes a 1-year warranty.",
+        "All TechNest products include a minimum 1-year manufacturer warranty covering defects in materials and workmanship. The ProBook X1 and SoundBar 360 include a 2-year warranty. Warranty does not cover physical damage, water damage (unless the product is rated waterproof), or damage from unauthorised modifications. To make a warranty claim, contact support@technest.com with your order number and a description of the issue."
+      ],
+      "response": "The TechNest ProBook X1 features 16GB DDR5 RAM and a 512GB NVMe SSD."
+    },
+    {
+      "id": "g003",
+      "metric_focus": "context_precision",
+      "user_input": "How long is the battery life on the SoundPods Pro?",
+      "reference": "The SoundPods Pro offer 8 hours of playback per charge and an additional 24 hours from the charging case, giving a total of 32 hours.",
+      "retrieved_contexts": [
+        "The TechNest SoundPods Pro are true wireless earbuds with active noise cancellation (ANC), 8 hours of playback per charge plus 24 hours with the case, and IPX4 water resistance. They connect via Bluetooth 5.3 and support multipoint pairing with two devices simultaneously. Price: $149.",
+        "The TechNest BassBuds Max are over-ear wireless headphones with 40-hour battery life, hybrid active noise cancellation, and a premium 40mm driver for deep bass. They fold flat for travel and include a carrying case. Price: $199. Compatible with all Bluetooth devices.",
+        "The TechNest SoundBar 360 is a 2.1 soundbar with a 120W output, built-in subwoofer, Dolby Atmos support, and HDMI ARC connectivity. It also supports Bluetooth streaming and has an optical audio input. Dimensions: 90cm wide. Price: $349. Includes a 2-year warranty."
+      ],
+      "response": "The TechNest SoundPods Pro have 8 hours of playback per charge, and with the case, you get an additional 24 hours, for a total of 32 hours."
+    },
+    {
+      "id": "g004",
+      "metric_focus": "context_recall",
+      "user_input": "What are TechNest's shipping options and how long do returns take to process?",
+      "reference": "TechNest offers free standard shipping on orders over $50 (3 to 5 business days) and expedited shipping for $9.99 (1 to 2 business days). Returns are accepted within 30 days and refunds are processed in 5 to 7 business days after the item is received.",
+      "retrieved_contexts": [
+        "TechNest offers free standard shipping on all orders over $50 within the continental US. Standard shipping takes 3 to 5 business days. Expedited shipping (1 to 2 business days) is available for $9.99. Same-day delivery is available in select cities for $19.99. Orders placed before 2pm local time are dispatched the same day.",
+        "TechNest accepts returns within 30 days of the original purchase date. Items must be in their original packaging with all accessories included. Customers are responsible for return shipping costs unless the item arrives defective or damaged. Refunds are processed within 5 to 7 business days of receiving the returned item. Digital downloads and opened software are non-refundable.",
+        "TechNest ships to over 40 countries. International shipping rates start at $14.99 and delivery takes 7 to 14 business days. Import duties and taxes are the responsibility of the customer and are not included in the product price. Free shipping promotions apply to US orders only."
+      ],
+      "response": "At TechNest, we offer three shipping options: \n1. Free standard shipping (3 to 5 business days) on orders over $50 within the continental US, \n2. Expedited shipping (1 to 2 business days) for $9.99, and \n3. Same-day delivery in select cities for $19.99.\n\nAs for returns, we accept them within 30 days of purchase. Once we receive the returned item, refunds are processed within 5 to 7 business days."
+    },
+    {
+      "id": "g005",
+      "metric_focus": "answer_correctness",
+      "user_input": "What is the price of the PixelPhone 15?",
+      "reference": "The TechNest PixelPhone 15 is priced at $899.",
+      "retrieved_contexts": [
+        "The TechNest PixelPhone 15 is a 6.7-inch AMOLED smartphone with a 50MP triple camera system, 8GB RAM, 256GB storage, and a 5,000mAh battery supporting 65W fast charging. Available in Midnight Black and Arctic White. Price: $899. Includes a 1-year warranty.",
+        "The TechNest ProBook X1 is a 14-inch laptop featuring an Intel Core i7-13th Gen processor, 16GB DDR5 RAM, and a 512GB NVMe SSD. It has a battery life of 12 hours, weighs 1.4kg, and comes with a backlit keyboard. Price: $1,299. Includes a 2-year manufacturer warranty.",
+        "The TechNest UltraTab S2 is a 11-inch tablet powered by a Snapdragon 870 processor with 8GB RAM and 128GB storage expandable via microSD. It features a 120Hz display, a 7,500mAh battery, and supports the TechNest Stylus Pen sold separately. Price: $549. Includes a 1-year warranty."
+      ],
+      "response": "The price of the TechNest PixelPhone 15 is $899."
+    }
+  ],
+  "scores": {
+    "Faithfulness": [
+      0.8571428571428571,
+      1.0,
+      0.6666666666666666,
+      1.0,
+      1.0
+    ],
+    "Answer Relevancy": [
+      0.9999999999999996,
+      0.8008633842117652,
+      0.8534550310914718,
+      0.7239913695837511,
+      0.9287718735480924
+    ],
+    "Context Precision": [
+      0.9999999999,
+      0.9999999999,
+      0.9999999999,
+      0.99999999995,
+      0.9999999999
+    ],
+    "Context Recall": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "Answer Correctness": [
+      0.6362502485935899,
+      0.9746035131052677,
+      0.6135401085873644,
+      0.5821267870284348,
+      0.9969256804515976
+    ]
+  },
+  "errors": {
+    "Faithfulness": [],
+    "Answer Relevancy": [],
+    "Context Precision": [],
+    "Context Recall": [],
+    "Answer Correctness": []
+  },
+  "phase1_done": true,
+  "phase2_done": true
+}

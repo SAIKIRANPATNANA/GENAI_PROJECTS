@@ -1,0 +1,26 @@
+[project]
+name = "ragas-main"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "ipykernel>=7.3.0",
+    "langchain==1.2.18",
+    "langchain-community==0.4.1",
+    "langchain-google-genai>=4.2.7",
+    "langchain-groq==1.1.2",
+    "langchain-openai==1.2.1",
+    "langsmith==0.8.3",
+    "logfire[requests]==4.32.1",
+    "loguru==0.7.3",
+    "nest-asyncio>=1.6.0",
+    "openai>=2.45.0",
+    "pandas>=3.0.3",
+    "pydantic==2.13.4",
+    "python-dotenv==1.2.2",
+    "ragas>=0.4.3",
+    "requests==2.33.1",
+    "sentence-transformers>=5.6.0",
+    "streamlit>=1.59.1",
+]
