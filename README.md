@@ -9,6 +9,7 @@ Recent additions in this repository also include content-focused, safety-focused
 - `blood-report-parsing-iisc` for AI-assisted blood report parsing, abnormality detection, and healthcare-oriented structured extraction.
 - `ai_guardrails` for NeMo Guardrails, Colang flows, input/output rails, and safer LLM behavior design.
 - `rag_evaluation` for RAGAS-based evaluation of retrieval and generation quality in a product-catalog RAG app.
+- `llm_gateways` for production LLM gateway concepts including Portkey routing, retries, fallbacks, observability, caching, rate limits, load balancing, and streaming.
 
 ## Included Projects
 
@@ -22,6 +23,7 @@ Recent additions in this repository also include content-focused, safety-focused
 - `harassment-bot`
 - `hybd_cmr_edtech`
 - `med-triage-agenticai`
+- `llm_gateways`
 - `pskgpt-via-transformers`
 - `rag_evaluation`
 - `sadhana-gen-ai-project`
