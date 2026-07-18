@@ -1,3 +1,5 @@
+advanced_prod_rag/processed_data/
+advanced_prod_rag/DATA/
 advanced_rag/processed_data/
 # Byte-compiled / optimized / DLL files
 __pycache__/

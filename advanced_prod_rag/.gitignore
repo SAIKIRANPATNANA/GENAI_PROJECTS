@@ -1,0 +1,7 @@
+DATA/
+processed_data/
+.env
+__pycache__/
+*.pyc
+
+scripts/aws_secret_arns.sh
