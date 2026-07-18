@@ -1,0 +1,2 @@
+python -m app.ingestion.processor DATA --wipe
+uvicorn app.main:app --reload --port 8000

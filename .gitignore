@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+advanced_rag/DATA
 build/
 develop-eggs/
 dist/

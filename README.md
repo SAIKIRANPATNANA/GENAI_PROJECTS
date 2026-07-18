@@ -8,6 +8,7 @@ Recent additions in this repository also include content-focused, safety-focused
 - `ainews-generation-agenticai` for AI-driven news generation, summarization, and topic-oriented publishing ideas.
 - `blood-report-parsing-iisc` for AI-assisted blood report parsing, abnormality detection, and healthcare-oriented structured extraction.
 - `ai_guardrails` for NeMo Guardrails, Colang flows, input/output rails, and safer LLM behavior design.
+- `advanced_rag` for enterprise agentic RAG with LangGraph planning, NeMo Guardrails, Portkey gateway fallback, Qdrant retrieval, FlashRank reranking, observability, and RAGAS evaluation.
 - `rag_evaluation` for RAGAS-based evaluation of retrieval and generation quality in a product-catalog RAG app.
 - `llm_gateways` for production LLM gateway concepts including Portkey routing, retries, fallbacks, observability, caching, rate limits, load balancing, and streaming.
 
@@ -15,6 +16,7 @@ Recent additions in this repository also include content-focused, safety-focused
 
 - `ainews-generation-agenticai`
 - `ai_guardrails`
+- `advanced_rag`
 - `ats-using-gemini`
 - `blog-generation-agenticai`
 - `blood-report-parsing-iisc`
