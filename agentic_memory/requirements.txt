@@ -1,0 +1,20 @@
+# --- Web app ---
+streamlit>=1.32
+
+# --- LLM (Groq, via LangChain's official integration) ---
+langchain>=1.0.0
+langchain-classic>=1.0.0
+langchain-groq>=0.3.0
+langchain-core>=0.3.49
+langchain-community>=0.3.0
+
+# --- Local embeddings + vector search (no API key needed, run on your own machine) ---
+fastembed>=0.4.0
+faiss-cpu>=1.8.0
+
+# --- Needed by LangChain's Token/Summary Buffer memory to count tokens locally ---
+transformers>=4.40.0
+
+# --- Charts and data handling ---
+pandas>=2.0
+numpy>=1.26

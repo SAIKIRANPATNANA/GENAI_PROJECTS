@@ -1,0 +1,19 @@
+[project]
+name = "agentic-memory-main"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "faiss-cpu>=1.8.0",
+    "fastembed>=0.4.0",
+    "langchain>=1.0.0",
+    "langchain-classic>=1.0.0",
+    "langchain-community>=0.3.0",
+    "langchain-core>=0.3.49",
+    "langchain-groq>=0.3.0",
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "streamlit>=1.32",
+    "transformers>=4.40.0",
+]
