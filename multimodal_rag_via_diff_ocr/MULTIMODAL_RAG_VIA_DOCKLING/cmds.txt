@@ -1,0 +1,4 @@
+uvicorn doc_parser.api.app:app --reload --port 8000
+python ingest_main.py ingest attention_is_all_you_need.pdf
+uv run streamlit run app.py
+

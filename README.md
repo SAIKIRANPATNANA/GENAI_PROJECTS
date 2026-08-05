@@ -13,6 +13,7 @@ Recent additions in this repository also include content-focused, safety-focused
 - `advanced_prod_rag` for production-ready enterprise RAG with OpenAI/Anthropic routing through Portkey, Jina embeddings/reranking, Qdrant retrieval, Prometheus metrics, auth, rate limiting, Neon/Upstash integrations, tests, and AWS deployment scripts.
 - `rag_evaluation` for RAGAS-based evaluation of retrieval and generation quality in a product-catalog RAG app.
 - `llm_gateways` for production LLM gateway concepts including Portkey routing, retries, fallbacks, observability, caching, rate limits, load balancing, and streaming.
+- `multimodal_rag_via_diff_ocr` for comparing Docling, Unlimited-OCR/PaddleOCR, and GLM-OCR layout strategies inside a multimodal RAG pipeline with Qdrant hybrid search, RRF fusion, reranking, Groq generation, FastAPI, and Streamlit BYOK workbenches.
 
 ## Included Projects
 
@@ -30,6 +31,7 @@ Recent additions in this repository also include content-focused, safety-focused
 - `hybd_cmr_edtech`
 - `med-triage-agenticai`
 - `llm_gateways`
+- `multimodal_rag_via_diff_ocr`
 - `pskgpt-via-transformers`
 - `rag_evaluation`
 - `sadhana-gen-ai-project`

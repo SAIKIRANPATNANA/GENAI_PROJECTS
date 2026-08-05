@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "multimodal_rag_v3"
+version = "0.3.0"
+description = "MultiModal RAG Pipeline v3 powered by Baidu PaddleOCR, Qdrant Hybrid Search, BGE Reranker, & Groq LLM."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.30.0",
+    "pydantic>=2.10.0",
+    "pydantic-settings>=2.6.0",
+    "httpx>=0.28.0",
+    "qdrant-client>=1.12.0",
+    "sentence-transformers>=3.3.0",
+    "fastembed>=0.4.0",
+    "openai>=1.50.0",
+    "loguru>=0.7.2",
+    "python-dotenv>=1.0.1",
+    "streamlit>=1.40.0",
+    "pymupdf>=1.25.0",
+    "pillow>=11.0.0",
+    "transformers>=4.57.1",
+    "matplotlib>=3.10.0",
+    "einops>=0.8.0",
+    "addict>=2.4.0",
+    "easydict>=1.13",
+]
+
+[project.optional-dependencies]
+paddle = [
+    "paddlepaddle-gpu>=2.6.0",
+    "paddleocr>=2.8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.uv]
+environments = ["sys_platform == 'linux'"]

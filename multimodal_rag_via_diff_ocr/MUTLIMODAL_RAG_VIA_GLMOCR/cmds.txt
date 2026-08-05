@@ -1,0 +1,2 @@
+nohup /home/user/qdrant/qdrant > /tmp/qdrant.log 2>&1 &
+uvicorn doc_parser.api.app:app --reload --port 8000

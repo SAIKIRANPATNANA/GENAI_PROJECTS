@@ -1,0 +1,2 @@
+uv run uvicorn doc_parser.api.app:app --reload --port 8000
+uv run streamlit run app.py

@@ -1,0 +1,113 @@
+Ran command: `uvicorn doc_parser.api.app:app --reload --port 8000`
+Ran command: `clear`
+
+Here are the **expected ground-truth answers** for all 15 evaluation queries directly from the *"Attention Is All You Need"* paper (Vaswani et al., 2017), including their exact paper sections and page numbers for reference verification:
+
+---
+
+### 1. 📊 Table & Quantitative Queries
+
+#### Q1: "What are the BLEU scores for Transformer (big) on the WMT 2014 English-to-German and English-to-French translation tasks?"
+* **Expected Ground Truth**:
+  * **English-to-German**: `28.4` BLEU (outperforms previous SOTA by +2.0 BLEU).
+  * **English-to-French**: `41.0` BLEU (single model SOTA).
+* **Reference**: Table 2 & Section 6.1 (Page 8).
+
+#### Q2: "What hyperparameters were used for learning rate warmup steps and optimizer parameters ($\beta_1, \beta_2, \epsilon$)?"
+* **Expected Ground Truth**:
+  * **Warmup steps**: `4,000` steps.
+  * **Optimizer**: Adam with $\beta_1 = 0.9$, $\beta_2 = 0.98$, $\epsilon = 10^{-9}$.
+* **Reference**: Section 5.3 (Page 7) & Section 5.4 (Page 8).
+
+#### Q3: "Compare the training costs (in FLOPs or GPU days) between Transformer, ByteNet, and ConvS2S."
+* **Expected Ground Truth**:
+  * **Transformer (big)**: $2.3 \times 10^{19}$ FLOPs (3.5 days on 8 P100 GPUs).
+  * **ByteNet**: $9.6 \times 10^{18}$ FLOPs.
+  * **ConvS2S**: $1.5 \times 10^{20}$ FLOPs (En-De) / $9.6 \times 10^{19}$ FLOPs (En-Fr).
+  * *Key finding*: Transformer big achieves new SOTA at a fraction of ConvS2S training cost.
+* **Reference**: Table 2 (Page 8).
+
+#### Q4: "How many attention heads and model dimensions ($d_{model}$) were configured for the base model versus the big model?"
+* **Expected Ground Truth**:
+  * **Base Model**: $N=6$ layers, $d_{model} = 512$, $d_{ff} = 2048$, $h = 8$ heads ($d_k = d_v = 64$).
+  * **Big Model**: $N=6$ layers, $d_{model} = 1024$, $d_{ff} = 4096$, $h = 16$ heads ($d_k = d_v = 64$).
+* **Reference**: Table 1 (Page 7).
+
+---
+
+### 2. 🧮 Mathematical & Formula Queries
+
+#### Q5: "What is the mathematical formula for Scaled Dot-Product Attention, including the scaling factor $\sqrt{d_k}$?"
+* **Expected Ground Truth**:
+  $$\text{Attention}(Q, K, V) = \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V$$
+* **Reference**: Section 3.2.1, Equation (1) (Page 4).
+
+#### Q6: "Write the formulas used to calculate Positional Encodings using sine and cosine functions."
+* **Expected Ground Truth**:
+  $$PE_{(pos, 2i)} = \sin\left(\frac{pos}{10000^{2i/d_{model}}}\right)$$
+  $$PE_{(pos, 2i+1)} = \cos\left(\frac{pos}{10000^{2i/d_{model}}}\right)$$
+  where $pos$ is the position and $i$ is the dimension index.
+* **Reference**: Section 3.5 (Page 6).
+
+#### Q7: "What is the equation for Multi-Head Attention using matrix projection weights $W_i^Q, W_i^K, W_i^V$?"
+* **Expected Ground Truth**:
+  $$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, \dots, \text{head}_h)W^O$$
+  $$\text{where } \text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$$
+  Projections: $W_i^Q \in \mathbb{R}^{d_{model} \times d_k}$, $W_i^K \in \mathbb{R}^{d_{model} \times d_k}$, $W_i^V \in \mathbb{R}^{d_{model} \times d_v}$, $W^O \in \mathbb{R}^{hd_v \times d_{model}}$.
+* **Reference**: Section 3.2.2, Equations (2) & (3) (Page 4-5).
+
+#### Q8: "What formula defines the Position-wise Feed-Forward Network (FFN) with ReLU activation?"
+* **Expected Ground Truth**:
+  $$\text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2$$
+  Linear transformation from $d_{model}=512$ to inner layer $d_{ff}=2048$ and back to $d_{model}=512$.
+* **Reference**: Section 3.3 (Page 5).
+
+---
+
+### 3. 🖼️ Architectural & Diagrammatic Queries
+
+#### Q9: "Describe the visual architecture of the Transformer model from Figure 1, detailing the Encoder and Decoder sub-layers."
+* **Expected Ground Truth**:
+  * **Encoder (Left)**: Stack of $N=6$ identical layers. Each layer has two sub-layers: (1) Multi-Head Self-Attention, and (2) Position-wise Feed-Forward Network.
+  * **Decoder (Right)**: Stack of $N=6$ identical layers. Each layer has three sub-layers: (1) Masked Multi-Head Self-Attention, (2) Multi-Head Cross-Attention over encoder outputs, and (3) Position-wise Feed-Forward Network.
+* **Reference**: Figure 1 (Page 3) & Section 3.1 (Page 2-3).
+
+#### Q10: "What sub-layers are inside each layer of the Transformer Encoder and Decoder stack?"
+* **Expected Ground Truth**:
+  * **Encoder**: 2 sub-layers (Self-Attention + Feed Forward).
+  * **Decoder**: 3 sub-layers (Masked Self-Attention + Encoder-Decoder Cross Attention + Feed Forward).
+* **Reference**: Section 3.1 (Page 2-3).
+
+#### Q11: "Where are Add & Norm (residual connection followed by layer normalization) placed in the architecture diagram?"
+* **Expected Ground Truth**:
+  * Around **every single sub-layer** in both the encoder and decoder.
+  * The output of each sub-layer is $\text{LayerNorm}(x + \text{SubLayer}(x))$.
+* **Reference**: Figure 1 & Section 3.1 (Page 3).
+
+#### Q12: "How does the Masked Multi-Head Attention block prevent positions from attending to subsequent tokens?"
+* **Expected Ground Truth**:
+  * By masking out (setting to $-\infty$) all values in the input of the softmax corresponding to illegal connections (positions $j > i$).
+  * This ensures predictions for position $i$ depend only on known outputs at positions less than $i$ (auto-regressive property).
+* **Reference**: Section 3.2.3 (Page 5).
+
+---
+
+### 4. 🔀 Hybrid / Cross-Modal Reasoning Queries
+
+#### Q13: "Why is Scaled Dot-Product Attention divided by $\sqrt{d_k}$ when $d_k$ is large, according to both text and mathematical justification?"
+* **Expected Ground Truth**:
+  * For large values of $d_k$, the dot products grow large in magnitude, pushing the softmax function into regions that have extremely small gradients (vanishing gradient problem).
+  * Assuming $q$ and $k$ are independent random variables with mean 0 and variance 1, their dot product $q \cdot k = \sum_{i=1}^{d_k} q_i k_i$ has mean 0 and variance $d_k$. Dividing by $\sqrt{d_k}$ scales the variance back to 1.
+* **Reference**: Section 3.2.1 Footnote 4 (Page 4).
+
+#### Q14: "How does self-attention compare to recurrent and convolutional layers in terms of maximum path length and per-layer complexity?"
+* **Expected Ground Truth**:
+  * **Self-Attention**: Complexity per layer $O(n^2 \cdot d)$, Sequential operations $O(1)$, Maximum Path Length $O(1)$.
+  * **Recurrent (RNN)**: Complexity per layer $O(n \cdot d^2)$, Sequential operations $O(n)$, Maximum Path Length $O(n)$.
+  * **Convolutional**: Complexity per layer $O(k \cdot n \cdot d^2)$, Sequential operations $O(1)$, Maximum Path Length $O(\log_k(n))$.
+* **Reference**: Table 1 & Section 4 (Page 6).
+
+#### Q15: "Explain how positional encodings allow the model to generalize to sequence lengths longer than those seen during training."
+* **Expected Ground Truth**:
+  * Because $PE_{pos+k}$ can be represented as a linear function of $PE_{pos}$ for any fixed offset $k$. Sinusoidal encodings allow extrapolation beyond training lengths.
+* **Reference**: Section 3.5 (Page 6).
