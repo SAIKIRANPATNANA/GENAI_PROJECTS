@@ -1,0 +1,27 @@
+{
+  "projectId": "73bee2c0-4878-41ed-81d3-79ebb1b1d54b",
+  "type": "frontend",
+  "name": "SAVE20 applies the promised 20 percent discount",
+  "planSteps": [
+    {
+      "type": "action",
+      "description": "Open the LoopCart home page and confirm the cart subtotal is $100.00."
+    },
+    {
+      "type": "action",
+      "description": "Enter SAVE20 in the Coupon code field and click Apply coupon."
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the page confirms that coupon SAVE20 was applied."
+    },
+    {
+      "type": "assertion",
+      "description": "Verify the Discount value is -$20.00."
+    },
+    {
+      "type": "assertion",
+      "description": "Verify Shipping is Free and the final Total is $80.00."
+    }
+  ]
+}

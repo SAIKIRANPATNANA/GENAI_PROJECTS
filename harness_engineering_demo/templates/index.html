@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent Harness Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
+</head>
+<body>
+    <main class="container">
+        <section class="hero">
+            <span class="badge">LangGraph + FastAPI</span>
+            <h1>Production Multi-Agent Support System</h1>
+            <p>
+                A simple demo of harness engineering:
+                guardrail → router → specialist agent → reviewer.
+            </p>
+        </section>
+
+        <section class="flow">
+            <div>🛡️ Guardrail</div>
+            <span>→</span>
+            <div>🧭 Router</div>
+            <span>→</span>
+            <div>🤖 Specialist</div>
+            <span>→</span>
+            <div>✅ Reviewer</div>
+        </section>
+
+        <section class="card">
+            <label for="message">Ask the support team</label>
+            <textarea
+                id="message"
+                placeholder="Example: I am getting an API login error. How can I fix it?"
+            ></textarea>
+
+            <div class="examples">
+                <button class="example" data-text="I am getting an API login error. How can I fix it?">
+                    Technical
+                </button>
+                <button class="example" data-text="How much is the Pro plan and can I get a refund?">
+                    Billing
+                </button>
+                <button class="example" data-text="What can your support team help me with?">
+                    General
+                </button>
+            </div>
+
+            <button id="sendButton" class="primary">Run Multi-Agent System</button>
+        </section>
+
+        <section id="resultCard" class="card result hidden">
+            <div class="result-header">
+                <h2>Final Answer</h2>
+                <span id="routeBadge" class="route-badge"></span>
+            </div>
+
+            <div id="answer" class="answer"></div>
+
+            <h3>Harness Execution Trace</h3>
+            <div id="trace" class="trace"></div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', path='/script.js') }}"></script>
+</body>
+</html>

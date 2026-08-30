@@ -1,0 +1,11 @@
+streamlit>=1.38
+langgraph>=0.2
+langchain-core>=0.3
+langchain-groq>=0.2
+faiss-cpu>=1.8
+networkx>=3.3
+pyvis>=0.3.2
+python-dotenv>=1.0
+pyyaml>=6.0
+requests>=2.32
+openevals>=0.2

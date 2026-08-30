@@ -1,0 +1,19 @@
+[project]
+name = "google-open-knowledge-graph-main"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "faiss-cpu>=1.8",
+    "langchain-core>=0.3",
+    "langchain-groq>=0.2",
+    "langgraph>=0.2",
+    "networkx>=3.3",
+    "openevals>=0.2",
+    "python-dotenv>=1.0",
+    "pyvis>=0.3.2",
+    "pyyaml>=6.0",
+    "requests>=2.32",
+    "streamlit>=1.38",
+]

@@ -1,0 +1,58 @@
+# ============================================================
+# LOOPCART — TESTSPRITE DEMO: COMMAND REFERENCE
+# ============================================================
+
+
+# ── SECTION 1: ONE-TIME SETUP ────────────────────────────────
+
+# Load nvm & switch to Node 22 (run this in every new terminal session)
+export NVM_DIR="$HOME/.nvm" && \. "$NVM_DIR/nvm.sh" && nvm use 22
+
+# Authenticate with TestSprite
+testsprite setup
+
+
+# ── SECTION 2: LOCAL DEVELOPMENT ─────────────────────────────
+
+npm run dev
+# Open: http://localhost:5173
+
+
+# ── SECTION 3: BUILD & DEPLOY TO VERCEL ──────────────────────
+
+npm run build
+npx vercel --prod --yes
+
+
+# ── SECTION 4: TESTSPRITE — CREATE PROJECT ───────────────────
+
+testsprite project create --type frontend --name "LoopCart proj1" --url https://loop-cart-checkout-app-main.vercel.app/
+
+# Project ID: 73bee2c0-4878-41ed-81d3-79ebb1b1d54b
+
+
+# ── SECTION 5: TESTSPRITE — GENERATE PLAN ────────────────────
+
+npm run testsprite:plan -- proj_73bee2c0-4878-41ed-81d3-79ebb1b1d54b
+# Output: testsprite-plans/save20-discount.plan.json
+
+
+# ── SECTION 6: TESTSPRITE — RUN TESTS ────────────────────────
+
+testsprite test create --plan-from ./testsprite-plans/save20-discount.plan.json --run --wait --output json
+
+# Test IDs from runs:
+# testId:  7813b364-db35-4ea0-9526-aecda0903a2c
+# runId:   dbebddcd-2caf-4846-a6e6-ed99fbaab592
+
+
+# ── SECTION 7: TESTSPRITE — TEST ARIFACTS DOWNLOADING ────────────────────────
+
+mkdir -p ./testsprite/failure && testsprite test failure get 7813b364-db35-4ea0-9526-aecda0903a2c --out ./testsprite/failure
+
+
+# ── SECTION 8: AFTER FIXING THE BUG — REDEPLOY & RERUN ───────
+
+npm run build
+npx vercel --prod --yes
+testsprite test rerun 7813b364-db35-4ea0-9526-aecda0903a2c --wait --output json

@@ -1,0 +1,51 @@
+[
+  {
+    "id": "q1",
+    "question": "What are the prerequisites for Machine Learning?",
+    "type": "direct",
+    "reference_answer": "Machine Learning requires Statistics for Data-Driven Fields and Python Programming Fundamentals.",
+    "note": "Basic RAG should do well here: one document (machine_learning.md) states the prerequisites directly."
+  },
+  {
+    "id": "q2",
+    "question": "What is the path from Python to Computer Vision?",
+    "type": "multi-hop",
+    "reference_answer": "Python, then Statistics, then Machine Learning, then Deep Learning, then Computer Vision.",
+    "note": "Requires chaining facts spread across 5 separate documents. Vector search retrieves the endpoints well but tends to miss the middle hops (Statistics, Machine Learning); a reranker can only reorder what was retrieved, so it does not fix this. OKF traversal returns the exact chain."
+  },
+  {
+    "id": "q3",
+    "question": "What concepts connect Machine Learning and Computer Vision?",
+    "type": "relationship",
+    "reference_answer": "Deep Learning connects them: Computer Vision requires Deep Learning, and Deep Learning requires Machine Learning.",
+    "note": "OKF should expose Deep Learning as the connecting concept via graph traversal."
+  },
+  {
+    "id": "q4",
+    "question": "What should a student study before Computer Vision?",
+    "type": "multi-hop",
+    "reference_answer": "Python, then Statistics, then Machine Learning, then Deep Learning.",
+    "note": "Same multi-hop chain as q2, phrased as a prerequisite question."
+  },
+  {
+    "id": "q5",
+    "question": "Why is Deep Learning relevant to Computer Vision?",
+    "type": "synthesis",
+    "reference_answer": "Computer Vision requires Deep Learning because it applies convolutional neural network architectures and the gradient-based training methods that Deep Learning introduces.",
+    "note": "Raw RAG is strong here (detailed passage in computer_vision.md); Hybrid should combine that passage with the OKF relationship."
+  },
+  {
+    "id": "q6",
+    "question": "How is Data Science related to Machine Learning?",
+    "type": "relationship",
+    "reference_answer": "Data Science is related to Machine Learning: it applies machine learning techniques for predictive analytics, though from an applied, workflow-oriented perspective rather than the algorithmic depth of the Machine Learning course itself.",
+    "note": "Tests a 'related' (non-prerequisite) edge rather than a 'requires' edge."
+  },
+  {
+    "id": "q7",
+    "question": "What is the minimum attendance required to sit final examinations?",
+    "type": "direct-noise",
+    "reference_answer": "A minimum of 75% attendance is required to sit final examinations.",
+    "note": "Only in curriculum_rules.md, which is not part of the OKF bundle. Basic/Hybrid RAG should answer; OKF-only should say it is not covered."
+  }
+]

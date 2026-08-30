@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+.faiss/
+*.faiss
+*.pkl
+tests/eval_results.json
+data/processed/
